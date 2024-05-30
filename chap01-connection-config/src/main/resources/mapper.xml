@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper 에는 실행하고자 하는 sql 문을 작성해서 넣고 이름을 지어줌-->
+<mapper namespace="mapper">
+    <select id="selectSysDate" resultType="java.util.Date">
+        SELECT
+             CURDATE()
+        FROM DUAL
+    </select>
+</mapper>
