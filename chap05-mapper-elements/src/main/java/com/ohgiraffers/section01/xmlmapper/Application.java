@@ -1,5 +1,9 @@
 package com.ohgiraffers.section01.xmlmapper;
 
+import com.ohgiraffers.common.CategoryDTO;
+import com.ohgiraffers.common.MenuAndCategoryDTO;
+import com.ohgiraffers.common.MenuDTO;
+
 import java.util.Scanner;
 
 public class Application {
@@ -20,12 +24,13 @@ public class Application {
             switch (no){
                 case 1 : elementTestService.selectCacheTest(); break;
                 case 2: resultMapSubMenu(); break;
-                case 3: break;
-                case 4: break;
+                case 4: insertSubMenu(); break;
             }
 
         }while(true);
     }
+
+
 
     private static void resultMapSubMenu() {
         Scanner sc = new Scanner(System.in);
@@ -50,4 +55,70 @@ public class Application {
 
         }while(true);
     }
+
+    private static void insertSubMenu() {
+        Scanner sc = new Scanner(System.in);
+        ElementTestService elementTestService = new ElementTestService();
+
+        do{
+            System.out.println("======= <insert> 서브 메뉴 =======");
+            System.out.println("1. insert 테스트(메뉴 등록)");
+            System.out.println("2. insert 테스트(신규 카테고리의 메뉴 등록)");
+            System.out.println("메뉴 번호를 입력 해주세요 : ");
+            int no = sc.nextInt();
+
+            switch (no){
+                case 1: elementTestService.insertMenuTest(inputMenu()); break;
+                case 2: elementTestService.insertCategoryAndMenuTest(inputMenuAndCategory()); break;
+            }
+
+        }while (true);
+    }
+
+
+    private static MenuDTO inputMenu() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("등록할 메뉴 이름을 입력 해주세요 : ");
+        String name = sc.nextLine();
+        System.out.println("메뉴의 가격을 입력 해주세요 : ");
+        int price = sc.nextInt();
+        System.out.println("등록할 카테고리를 입력 해주세요 : ");
+        int category = sc.nextInt();
+        System.out.println("바로 판매등록을 할까요? (Y,N)");
+        sc.nextLine();
+        String orderableStatus = sc.nextLine();
+
+        MenuDTO menu = new MenuDTO();
+        menu.setName(name);
+        menu.setPrice(price);
+        menu.setCategoryCode(category);
+        menu.setOrderableStatus(orderableStatus);
+
+        return menu;
+    }
+
+    private static MenuAndCategoryDTO inputMenuAndCategory() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("신규 카테고리 명을 입력 해주세요 : ");
+        String categoryName = sc.nextLine();
+        System.out.println("등록할 메뉴 이름을 입력 해주세요 : ");
+        String menuName = sc.nextLine();
+        System.out.println("메뉴의 가격을 입력 해주세요 : ");
+        int menuPrice = sc.nextInt();
+        System.out.println("바로 판매등록을 할까요? (Y,N)");
+        sc.nextLine();
+        String orderableStatus = sc.nextLine();
+
+        MenuAndCategoryDTO menuAndCategoryDTO = new MenuAndCategoryDTO();
+        CategoryDTO category = new CategoryDTO();
+        menuAndCategoryDTO.setName(menuName);
+        menuAndCategoryDTO.setPrice(menuPrice);
+        menuAndCategoryDTO.setOrderableStatus(orderableStatus);
+        category.setName(categoryName);
+
+        menuAndCategoryDTO.setCategory(category);
+
+        return menuAndCategoryDTO;
+    }
+
 }

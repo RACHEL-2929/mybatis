@@ -127,10 +127,4 @@ public class Application {
         return parameter;
     }
 
-    //
-    // public static int inputCode() {
-    //     System.out.println("삭제하실 메뉴 코드를 입력해주세요 : ");
-    //     int no = sc.nextInt();
-    //     return no;
-    // }
 }
