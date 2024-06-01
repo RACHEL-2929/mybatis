@@ -42,6 +42,9 @@ public class Application {
 
             switch (no){
                 case 1: elementTestService.selectResultMapTest(); break;
+                case 2: elementTestService.selectResultMapConstructorTest(); break;
+                case 3: elementTestService.selectResultMapAssociationTest(); break;
+                case 4: elementTestService.selectResultMapCollectionTest(); break;
             }
 
 
